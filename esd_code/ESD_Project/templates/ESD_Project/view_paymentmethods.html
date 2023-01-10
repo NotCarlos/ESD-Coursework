@@ -1,0 +1,18 @@
+{% extends "ESD_Project/layout.html" %}
+    {% block title %}
+        Payment Method
+    {% endblock %}
+    {% block content %}
+
+    <a href="{% url 'create-paymentmethod' %}"> Add Payment Method </a><br/>
+    <h1>Card Holders</h1>
+    {% for pm in paymentmethod_list %}
+        <a href="{% url 'update-paymentmethod' pm.id %}"> {{pm.c_name}} </a><br/>
+    {% endfor %}
+        
+    <br/>
+    <a href="{% url 'view-account' %}">
+        <button class= "btn btn-default">Cancel</button>
+    </a>
+
+{% endblock %}

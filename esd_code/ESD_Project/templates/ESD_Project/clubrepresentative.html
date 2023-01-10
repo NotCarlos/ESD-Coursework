@@ -1,0 +1,27 @@
+{% extends "ESD_Project/layout.html" %}
+    {% block title %}
+        Club Representative Page
+    {% endblock %}
+    {% block content %}
+
+        {% for club_data in club_details %}        
+            <h1>Welcome To {{club_data.clubname}}!</h1>
+        
+            {% if club_data.clubrep == user.username %}
+                <a href="{% url 'view-account' %}">
+                    <button class= "btn btn-default">My Account</button>
+                </a>
+
+                <a href="{% url 'create-member' %}">
+                    <button class= "btn btn-default">Add Member</button>
+                </a>
+                
+                <a href="{% url 'view-members' %}">
+                    <button class= "btn btn-default">Members</button>
+                </a>
+            {% else %}
+                <p>You have to be logged in as a club representative to access this page</p>
+            {% endif %}
+        {% endfor %}
+
+{% endblock %}

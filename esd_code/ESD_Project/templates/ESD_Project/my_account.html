@@ -1,0 +1,43 @@
+{% extends "ESD_Project/layout.html" %}
+{% block title %}
+    My Account
+{% endblock %}
+{% block content %}
+    <h1>MY CLUB</h1>
+    <a href="{% url 'view-paymentmethod' %}">
+        <button class= "btn btn-default">Payment Method</button>
+    </a>
+    <table>
+        {% for club_data in club_details %}
+            <tr>    
+                <td><h2>{{club_data.clubname}}</h2></td>
+                
+                <td>
+                    <a href="{% url 'update-account' club_data.id %}">
+                        <button class= "btn btn-default">UPDATE</button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Club Number: </strong>{{club_data.clubnumber}}</td>
+            </tr>
+            <tr>
+                <td><strong>Phone Number: </strong>{{club_data.phonenumber}}</td>
+            </tr>
+            <tr>
+                <td><strong>Club Rep: </strong>{{club_data.clubrep}}</td>
+            </tr>
+            <tr>
+                <td><strong>Address: </strong>{{club_data.address}}</td>
+            </tr>
+            <tr>
+                <td><strong>Balance: </strong>£{{club_data.balance}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br/>
+    <a href="{% url 'club-representative-view' %}">
+        <button class= "btn btn-default">Back</button>
+    </a>
+{% endblock %}

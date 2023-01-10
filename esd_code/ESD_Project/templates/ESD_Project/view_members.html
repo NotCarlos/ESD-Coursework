@@ -1,0 +1,29 @@
+{% extends "ESD_Project/layout.html" %}
+    {% block title %}
+        Members
+    {% endblock %}
+    {% block content %}
+    <br/>
+    <table>
+        <tr>
+            <td> <strong>MEMBERS </strong></td>
+        </tr>
+        {% for clubmember in members_list %}
+            <tr>    
+                <td> 
+                    <a href="{% url 'update-member' clubmember.id %}">
+                    {{clubmember}}
+                </td>
+                <td align="right">
+                    <a href="{% url 'delete-member' clubmember.id %}">
+                        <button class= "btn btn-default">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br/>
+    <a href="{% url 'club-representative-view' %}">
+        <button class= "btn btn-default">Back</button>
+    </a>
+{% endblock %}
